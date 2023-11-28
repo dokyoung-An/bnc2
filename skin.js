@@ -1,7 +1,7 @@
 // Garden Gnome Software - Skin
 // Pano2VR 7.0.7/20014
 // Filename: version2-downarrow.ggsk
-// Generated 2023-11-28T14:26:07
+// Generated 2023-11-28T15:06:52
 
 function pano2vrSkin(player,base) {
 	player.addVariable('vis_down', 2, false, { ignoreInState: 0  });
@@ -11295,6 +11295,37 @@ function pano2vrSkin(player,base) {
 			}
 			return player.getCurrentNode();
 		}
+		me._image_4.logicBlock_size = function() {
+			var newLogicStateSize;
+			if (
+				((player.getViewerSize().width <= 570))
+			)
+			{
+				newLogicStateSize = 0;
+			}
+			else {
+				newLogicStateSize = -1;
+			}
+			if (me._image_4.ggCurrentLogicStateSize != newLogicStateSize) {
+				me._image_4.ggCurrentLogicStateSize = newLogicStateSize;
+				me._image_4.style.transition='width 0s, height 0s';
+				if (me._image_4.ggCurrentLogicStateSize == 0) {
+					me._image_4.style.width='150px';
+					me._image_4.style.height='150px';
+					me._image_4.style.left = 'calc(50% - (150px / 2))';
+					me._image_4.style.top = 'calc(50% - (150px / 2))';
+					skin.updateSize(me._image_4);
+				}
+				else {
+					me._image_4.style.width='300px';
+					me._image_4.style.height='300px';
+					me._image_4.style.left = 'calc(50% - (300px / 2))';
+					me._image_4.style.top = 'calc(50% - (300px / 2))';
+					skin.updateSize(me._image_4);
+				}
+			}
+		}
+		me._image_4.logicBlock_size();
 		me._image_4.ggUpdatePosition=function (useTransition) {
 		}
 		me._rectangle_1.appendChild(me._image_4);
@@ -11447,6 +11478,7 @@ function pano2vrSkin(player,base) {
 		me.__1.logicBlock_size();
 		me.__1.logicBlock_alpha();
 		me._timer_3.logicBlock_visible();
+		me._image_4.logicBlock_size();
 		player.addListener('activehotspotchanged', function(event) {
 			if (hotspotTemplates.hasOwnProperty('ht_node')) {
 				for(var i = 0; i < hotspotTemplates['ht_node'].length; i++) {
@@ -11694,6 +11726,7 @@ function pano2vrSkin(player,base) {
 			me.__8.logicBlock_size();
 			me.__1.logicBlock_position();
 			me.__1.logicBlock_size();
+			me._image_4.logicBlock_size();
 		});
 		player.addListener('varchanged_vis_buttonbg', function(event) {
 			me.__118.logicBlock_backgroundcolor();
